@@ -1,7 +1,7 @@
 import { Headers, URLSearchParams, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Flug } from '../entities/flug';
+import { Flug } from '../../entities/flug';
 
 @Injectable()
 export class FlugService {

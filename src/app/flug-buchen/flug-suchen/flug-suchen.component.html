@@ -1,0 +1,47 @@
+
+<div class="form-group">
+    <label>Von</label>
+    <input class="form-control" [(ngModel)]="von">
+</div>    
+<div class="form-group">
+    <label>Nach</label>
+    <input class="form-control" [(ngModel)]="nach">
+</div>    
+<div class="form-group">
+    <button class="btn btn-primary" (click)="search()" [disabled]="!von || !nach">
+        Suchen
+    </button>
+</div>    
+
+<!--
+[ngClass]="{ 'active': (f == selectedFlug) }"
+-->
+<!--
+<table class="table table-striped">
+    <tr *ngFor="let f of fluege" [ngStyle]="{ 'background-color': (f == selectedFlug) ? 'orange' : '' }">
+        <td>{{f.id}}</td>
+        <td>{{f.von | ort:'short' }}</td>
+        <td>{{f.nach | ort:'long' }}</td>
+        <td>{{f.datum | date:'dd.MM.yyyy' }}</td>
+        <td><a (click)="select(f)">Auswählen</a></td>
+    </tr>
+</table>    
+-->
+<div class="row">
+<div *ngFor="let f of fluege" style="margin-bottom: 20px;" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <flug-card
+            [item]="f" 
+            [(selected)]="basket[f.id]">
+    </flug-card>
+</div>    
+</div>
+<!--
+    (selectedChange)="basket[f.id] = $event"
+-->        
+
+<div class="row">
+<pre>Warenkorb
+-------------------
+{{basket | json}}
+</pre>    
+<div>

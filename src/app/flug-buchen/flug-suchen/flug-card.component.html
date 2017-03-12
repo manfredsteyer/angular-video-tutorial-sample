@@ -1,0 +1,15 @@
+<div style="padding:20px;"
+     [ngStyle]="{'background-color': (selected) ?  'orange' : 'lightsteelblue' }">
+
+    <h2>{{item.von}} - {{item.nach}}</h2>
+    <p>Flugnr. #{{item.id}}</p>
+    <p>Datum: {{item.datum | date:'dd.MM.yyyy HH:mm'}}</p>
+
+    <p>
+       <button class="btn btn-default" *ngIf="!selected" (click)="select()">Auswählen</button>
+       <button class="btn btn-default" *ngIf="selected" (click)="deselect()">Entfernen</button>   
+
+       <a class="btn btn-default" [routerLink]="['/flug-edit', item.id, { showDetails: true, expertMode: false }]">Edit</a>
+
+    </p>
+</div>
